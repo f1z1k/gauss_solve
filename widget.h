@@ -21,11 +21,16 @@ private slots:
 
     void on_spinBox_2_valueChanged(int arg1);
 
+    void on_doubleSpinBox_valueChanged(double arg1);
+
 private:
     Ui::Widget *ui;
     int N, M;
-    void plotAnalyze(double a, double b, double plotDelta);
-    void plotResult(int N, int M, double a, double b, double plotDelta);
+    double a, b;
+    double plotDelta;
+    void plotMain();
+    void plotAnalyze();
+    void plotResult();
 };
 
 #endif // WIDGET_H

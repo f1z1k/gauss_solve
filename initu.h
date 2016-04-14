@@ -3,15 +3,17 @@
  
 class TInitU {
 public:
-    TInitU(int N, double *x, double *aU, int maxIter);
+    TInitU(int N, double *x, double *aU, int maxIter, double eps);
     ~TInitU();
     double get(double x);
 private:
     double E();
     double findMinE();
     double findMinEm();
-    void addWAR();
-    void newWAR();
+    void addGaussian();
+    void firstGaussian();
+    void g();
+    double h(double deltaE, double t);
     double T(double c, double T0);
     double gaussian(double w, double a, double r, double x);
     double U(double *w,double *a, double *r, double x);
@@ -21,16 +23,21 @@ private:
     double *x;
     double *aU;
 
-    double *prevW;
-    double *prevA;
-    double *prevR;
+    double *newW;
+    double *newA;
+    double *newR;
     double *curW;
     double *curA;
     double *curR;
 
-    double *gradW;
-    double *gradA;
-    double *gradR;
+    double *minW;
+    double *minA;
+    double *minR;
+
+    double eps;
+    double t;
+    double minU, maxU, minX, maxX;
+    double minE;
 };
 
 #endif
