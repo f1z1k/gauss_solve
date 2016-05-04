@@ -22,3 +22,5 @@ HEADERS  += widget.h \
     qcustomplot.h
 
 FORMS    += widget.ui
+
+QMAKE_CXXFLAGS += -std=c++11

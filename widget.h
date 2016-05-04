@@ -23,11 +23,18 @@ private slots:
 
     void on_doubleSpinBox_valueChanged(double arg1);
 
+    void on_pushButton_clicked();
+
+    void on_doubleSpinBox_2_valueChanged(double arg1);
+
 private:
     Ui::Widget *ui;
     int N, M;
+    int DIM;
     double a, b;
     double plotDelta;
+    double eps;
+    double t;
     void plotMain();
     void plotAnalyze();
     void plotResult();

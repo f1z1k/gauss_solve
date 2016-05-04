@@ -1,23 +1,31 @@
 #ifndef INITU_H
-#define UNITU_H
- 
+#define INITU_H
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <map>
+#include <random>
+#include <cmath>
+
+using namespace std;
 class TInitU {
 public:
-    TInitU(int N, double *x, double *aU, int maxIter, double eps);
+    TInitU(int N, int DIM, double *x, double *aU, int maxIter, double eps);
     ~TInitU();
-    double get(double x);
+    double get(double* x);
 private:
-    double E();
+    void initRange();
     double findMinE();
     double findMinEm();
     void addGaussian();
     void firstGaussian();
+    double E();
     void g();
     double h(double deltaE, double t);
     double T(double c, double T0);
-    double gaussian(double w, double a, double r, double x);
-    double U(double *w,double *a, double *r, double x);
-    int N, M;
+    double gaussian(double w, double *a, double r, double *x);
+    double U(double *w,double *a, double *r, double *x);
+    int N, M, DIM;
     double deltaE;
     int maxIter;
     double *x;
@@ -36,8 +44,11 @@ private:
 
     double eps;
     double t;
-    double minU, maxU, minX, maxX;
+    double fromW, toW, fromR, toR;
+    double *fromA, *toA;
     double minE;
-};
 
+    random_device rd;
+    mt19937 gen;
+};
 #endif
